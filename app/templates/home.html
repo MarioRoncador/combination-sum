@@ -1,0 +1,40 @@
+<div class="title">{{ home.title }}</div>
+<h6><em>Today: {{home.timeNow | date: "medium" }}</em> </h6>
+<h5>{{home.description }}</h5>
+
+<div class="divider"></div>
+
+<div class="form-group">
+  <div for="Numbers"><strong>- Numbers -</strong></div>
+  <h4><small>Insert numbers separated by space or comma</small></h4>
+  <input type="text" class="form-control" id="numbersArray" ng-model="numbersArray" placeholder="Numbers">
+  <div class="divider"></div>
+  <div for="Sum"><strong>- Sum -</strong></div>
+  <h4><small>Insert the desired sum</small></h4>
+  <input type="text" class="form-control" id="sum" ng-model="sum" placeholder="Sum">
+</div>
+<div ng-controller="HomeController">
+  <div>
+    <button button type="button" class="btn btn-info" ng-click="home.runFunction(sum,numbersArray)">Find combination</button>
+  </div>
+</div>
+
+<div class="panel-body">
+  <ul class="list-group">
+    <h6><mark>- Result -</mark></h6>
+    <div  ng-repeat="combination in home.combinations">
+      <li class="list-group-item">
+        <div class="combination">
+          <h5>{{ combination }}</h5>
+        </div>
+      </div>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+  <div class="panel-footer">
+    <div class="row">
+      <p><small>Created by: </small><strong>Mario Roncador</strong></p>
+      <p><a href="mailto:mario.roncador@icloud.com">Email    </a><a href="https://www.linkedin.com/in/marioroncador/">LinkedIn   </a><a href="https://github.com/MarioRoncador">GitHub</a></p>
+    </div>
+  </div>
