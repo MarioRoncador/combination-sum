@@ -1,35 +1,52 @@
-<div class="title">{{ home.title }}</div>
-<h6><em>Today: {{home.timeNow | date: "medium" }}</em> </h6>
+<div class="pull-right"><h6><em><small>Today: {{home.timeNow | date: "medium" }}</small></em> </h6></div>
+<div class="title"><big>C∑</big>{{ home.title }}</div>
 <h5>{{home.description }}</h5>
 
 <div class="divider"></div>
 
 <div class="form-group">
-  <div for="Numbers"><strong>- Numbers -</strong></div>
+  <h4 for="Numbers"><span class="label label-primary"> Numbers </span></h4>
   <h4><small>Insert numbers separated by space or comma</small></h4>
   <input type="text" class="form-control" id="numbersArray" ng-model="numbersArray" placeholder="Numbers">
+
+
+  <div class="col-sm-6 col-md-6 col-lg-6">
+    <div class="divider"></div>
+    <h4 for="Sum"><span class="label label-primary"> Sum </span></h4>
+    <h4><small>Insert the desired sum</small></h4>
+    <input type="text" class="form-control" id="sum" ng-model="sum" placeholder="Sum">
+  </div>
   <div class="divider"></div>
-  <div for="Sum"><strong>- Sum -</strong></div>
-  <h4><small>Insert the desired sum</small></h4>
-  <input type="text" class="form-control" id="sum" ng-model="sum" placeholder="Sum">
+  <div class="col-sm-6 col-md-6 col-lg-6">
+    <h4 for="Threshold"><span class="label label-default"> Threshold </span></h4>
+    <h4><small>Insert threshold</small></h4>
+    <input type="text" class="form-control" id="threshold" ng-model="threshold" placeholder="Threshold">
+  </div>
 </div>
+  <div class="divider"></div>
 <div ng-controller="HomeController">
   <div>
-    <button button type="button" class="btn btn-info" ng-click="home.runFunction(sum,numbersArray)">Find combination</button>
+    <button button type="button" class="btn btn-info" ng-click="home.runFunction(sum,numbersArray,threshold)">Find combination</button>
   </div>
 </div>
 
+<!-- Conditionally display Combinations or Closest Combination -->
 <div class="panel-body">
   <ul class="list-group">
-    <h6><mark>- Result -</mark></h6>
+    <h4 for="Result"><span class="label label-success"> Result </span></h4>
     <div  ng-repeat="combination in home.combinations">
       <li class="list-group-item">
         <div class="combination">
-          <h5>{{ combination }}</h5>
+          <h5>{{ combination }}
+          <button type="button" class="btn btn-default pull-right align-top" data-clipboard-action="copy" data-clipboard-target="#copy-target" ng-click="home.copyResult()"><span class="glyphicon glyphicon-scissors"></span></button>
+          </h5>
         </div>
       </div>
     </ul>
   </div>
+
+  <input type="text" ng-model="textToCopy">
+  <button clipboard supported="supported" text="textToCopy" on-copied="home.copyResult()" on-error="fail(err)">Copy</button>
 
   <div class="divider"></div>
   <div class="panel-footer">

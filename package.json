@@ -1,6 +1,6 @@
 {
-  "name": "bloc-frontend-project-starter",
-  "version": "0.0.3",
+  "name": "mario-roncador-combination-sum",
+  "version": "1.0.0",
   "description": "Starter project for the Bloc Frontend Web Development",
   "repository": {
     "type": "git",
@@ -10,11 +10,13 @@
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Bloc Inc",
+  "author": "Mario Roncador",
   "license": "ISC",
   "dependencies": {
+    "angular-clipboard": "^1.5.0",
     "grunt": "^1.0.1",
     "hapi": "~7.5.0",
+    "ngclipboard": "^1.1.1",
     "path": "^0.4.9"
   },
   "devDependencies": {
