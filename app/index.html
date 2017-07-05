@@ -3,7 +3,7 @@
 <head lang="en">
   <link href="/styles/favicon.ico" rel="shortcut icon" type="image/x-icon" />
   <meta charset="UTF-8">
-  <title>Combination Sum</title>
+  <title>Combination Sum {{ 'TITLE' | translate }}</title>
   <i class="fa fa-suitcase" aria-hidden="true"></i>
 
   <!-- bootstrap configuration-->
@@ -39,8 +39,15 @@
   <!-- Angualar UI Bootstrap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.3.0/ui-bootstrap-tpls.min.js"></script>
 
+  <!-- Angualar Translate -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.15.2/angular-translate.min.js"></script>
+
+  <!-- Angualar Translate Sanitizer-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-sanitize.js"></script>
+
   <!-- Application Files -->
   <script src="/scripts/app.js"></script>
   <script src="/scripts/HomeController.js"></script>
+  <script src="/scripts/TranslateController.js"></script>
 </body>
 </html>

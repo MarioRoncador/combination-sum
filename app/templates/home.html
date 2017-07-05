@@ -1,3 +1,17 @@
+<!-- This is the translation test from https://angular-translate.github.io/docs/#/guide -->
+
+<div ng-controller="TranslateController">
+ <p>{{ 'HEADLINE' | translate }}</p>
+ <p>{{ 'PARAGRAPH' | translate }}</p>
+
+ <button class="btn btn-default" ng-click="changeLanguage('de')" translate="BUTTON_LANG_DE"></button>
+ <button class="btn btn-default" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
+</div>
+
+<!-- End of Translation Test -->
+
+<div class="divider"></div>
+
 <div class="pull-right"><h6><em><small>Today: {{home.timeNow | date: "medium" }}</small></em> </h6></div>
 <div class="title"><big>C∑</big>{{ home.title }}</div>
 <h5>{{home.description }}</h5>
@@ -23,7 +37,9 @@
     <input type="text" class="form-control" id="threshold" ng-model="threshold" placeholder="Threshold">
   </div>
 </div>
+
   <div class="divider"></div>
+
 <div ng-controller="HomeController">
   <div>
     <button button type="button" class="btn btn-info" ng-click="home.runFunction(sum,numbersArray,threshold)">Find combination</button>
@@ -45,10 +61,8 @@
     </ul>
   </div>
 
-  <input type="text" ng-model="textToCopy">
-  <button clipboard supported="supported" text="textToCopy" on-copied="home.copyResult()" on-error="fail(err)">Copy</button>
-
   <div class="divider"></div>
+
   <div class="panel-footer">
     <div class="row">
       <p><small>Created by: </small><strong>Mario Roncador</strong></p>

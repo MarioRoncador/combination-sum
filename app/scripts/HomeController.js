@@ -3,7 +3,7 @@
 
     var home = this;
     var title = " - Combination Sum";
-    var description = "This calculator takes a set of numbers and returns all possible combinations to reach a given sum. Widely used in accounting, auditing, finance and data analysis.";
+    var description = "This calculator takes a set of numbers and returns all possible combinations to reach a given sum. A threshold can be specified and if no combinations adds up to the sum, the closest result is checked agaist the threshold -- Widely used in accounting, auditing, finance and data analysis.";
     var timeNow = new Date().getTime();
     var tmpArray = [];
     var finalArray = [];
