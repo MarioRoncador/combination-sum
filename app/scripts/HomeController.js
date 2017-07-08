@@ -1,38 +1,39 @@
 (function() {
-  function HomeController() {
+  function HomeController(TranslationsService) {
 
     var home = this;
-    var title = " - Combination Sum";
-    var description = "This calculator takes a set of numbers and returns all possible combinations to reach a given sum. A threshold can be specified and if no combinations adds up to the sum, the closest result is checked agaist the threshold -- Widely used in accounting, auditing, finance and data analysis.";
+    var array = [];
     var timeNow = new Date().getTime();
     var tmpArray = [];
     var finalArray = [];
-    var errorMessageNoCombination = "NO COMBINATIONS";
-    var thresholdMessage = "- The closest combination is: ";
-    var thresholdYes = " - WITHIN the threshold";
-    var thresholdNo = " - NOT WITHIN the threshold";
-    var errorMessageNoValues = "PLEASE INSERT THE REQUIRED VALUES";
-    var array = [];
 
-    home.title = title;
-    home.description = description;
     home.timeNow = timeNow;
-    home.errorMessageNoCombination = errorMessageNoCombination;
-    home.thresholdMessage = thresholdMessage;
-    home.thresholdYes = thresholdYes;
-    home.thresholdNo = thresholdNo;
-    home.errorMessageNoValues = errorMessageNoValues;
 
+    home.changeLanguage = changeLanguage;
+    // English as a default language
+    changeLanguage("en");
+
+     function changeLanguage(lang) {
+       console.info(`Switching language to ${lang}`);
+       console.count("HERE!");
+      var switcher = {
+        "en": function() { home.translations = TranslationsService["en-US"]; },
+        "it": function() { home.translations = TranslationsService["it-IT"]; },
+        "es": function() { home.translations = TranslationsService["es-ES"]; },
+        "de": function() { home.translations = TranslationsService["de-DE"]; },
+      };
+      return switcher[lang]();
+    };
 
     // function linked to the run button and displys the result
     home.runFunction = function(sum,numbersArray,threshold) {
-      home.closestSum = 0;
+      home.translations.closestSum = 0;
       arrayBuilder(numbersArray);
 
       //function that builds an array for input to function
       function arrayBuilder(numbersArray){
         if(numbersArray == null){
-          alert(home.errorMessageNoValues);
+          alert(home.translations.errorMessageNoValues);
           exit; //stop the execution of function
         }else{
           array = numbersArray.split(/[ ,]+/).map(Number);
@@ -54,13 +55,13 @@
         var upperLimit = targetSum - threshold;
         console.log(upperLimit);
         if(threshold == undefined){
-          finalArray[0] = (home.errorMessageNoCombination);
+          finalArray[0] = (home.translations.errorMessageNoCombination);
           home.combinations = finalArray;
-        }else if(upperLimit > home.closestSum && threshold){
-          finalArray[0] = (home.errorMessageNoCombination+" "+home.thresholdMessage+home.closestSum+" "+home.thresholdNo);
+        }else if(upperLimit > home.translations.closestSum && threshold){
+          finalArray[0] = (home.translations.errorMessageNoCombination+" "+home.translations.thresholdMessage+home.translations.closestSum+" "+home.translations.thresholdNo);
           home.combinations = finalArray;
         }else{
-          finalArray[0] = (home.errorMessageNoCombination+" "+home.thresholdMessage+home.closestSum+" "+home.thresholdYes);
+          finalArray[0] = (home.translations.errorMessageNoCombination+" "+home.translations.thresholdMessage+home.translations.closestSum+" "+home.translations.thresholdYes);
           home.combinations = finalArray;
         }
       }else{
@@ -82,8 +83,8 @@
 
       partialArray.forEach(function(entry) {
         s=s+entry;
-        if(s > home.closestSum && s < targetSum){
-          home.closestSum = s;
+        if(s > home.translations.closestSum && s < targetSum){
+          home.translations.closestSum = s;
         }
       });
       if (s == targetSum) {
@@ -113,15 +114,15 @@
     // copy result to clipboard
     //var clipboard = new Clipboard(home.copyResult());
 
-    home.copyResult = function() {
-      level = $(this).parent().prev().find('select option:selected').val();
-      console.log($(this));
-      console.log("Copy function to be implemented");
+    home.copyResult = function(combination) {
+      // console.log($("*#combination").text());
+      // var text = $("*#combination").text();
+      console.log(combination);
+      window.prompt("Copy to clipboard: Cmd+C, Enter", combination);
     }
-
   }
 
   angular
   .module('combinationSum')
-  .controller('HomeController', [HomeController]);
+  .controller('HomeController', ['TranslationsService', HomeController]);
 })();
