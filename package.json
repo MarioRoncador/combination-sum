@@ -13,6 +13,7 @@
   "author": "Mario Roncador",
   "license": "ISC",
   "dependencies": {
+    "express": "4.15.3",
     "grunt": "^1.0.1",
     "hapi": "~7.5.0",
     "path": "^0.4.9"
