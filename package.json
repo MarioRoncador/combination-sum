@@ -1,6 +1,6 @@
 {
   "name": "mario-roncador-combination-sum",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Starter project for the Bloc Frontend Web Development",
   "repository": {
     "type": "git",
@@ -13,19 +13,13 @@
   "author": "Mario Roncador",
   "license": "ISC",
   "dependencies": {
-    "angular-clipboard": "^1.5.0",
     "grunt": "^1.0.1",
     "hapi": "~7.5.0",
-    "ngclipboard": "^1.1.1",
     "path": "^0.4.9"
   },
   "devDependencies": {
-    "angular-translate": "^2.15.2",
+    "angular-translate": "^2.15.1",
     "connect-modrewrite": "^0.7.9",
     "es5-shim": "^4.0.1"
-  },
-  "engines": {
-   "node": "8.0.0",
-   "npm": "5.04"
   }
 }
